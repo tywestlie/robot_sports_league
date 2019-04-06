@@ -17,13 +17,12 @@ describe 'Visitor' do
 
     click_on 'Create Team'
 
-    expect(current_path).to eq(new_user_path)
+    expect(current_path).to eq(new_team_path)
 
-    fill_in 'user[email]', with: email
-    fill_in 'user[first_name]', with: first_name
-    fill_in 'user[last_name]', with: last_name
-    fill_in 'user[password]', with: password
-    fill_in 'user[password_confirmation]', with: password
+    fill_in 'team[email]', with: email
+    fill_in 'team[team_name]', with: first_name
+    fill_in 'team[password]', with: password
+    fill_in 'team[password_confirmation]', with: password
 
     click_on 'Create Team'
 
