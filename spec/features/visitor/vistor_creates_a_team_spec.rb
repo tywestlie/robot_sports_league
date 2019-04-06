@@ -10,8 +10,10 @@ describe 'Visitor' do
     visit '/'
 
     expect(current_path).to eq(root_path)
-
-    click_on 'Sign In'
+    
+    within('.welcome-btns') do
+      click_on 'SIGN UP'
+    end
 
     expect(current_path).to eq(login_path)
 

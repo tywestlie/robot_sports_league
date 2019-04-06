@@ -9,6 +9,6 @@ describe 'Visitor' do
     expect(page).to have_content('Welcome to the Robot Sports League')    
     expect(page).to have_content('Sign in or register below!')
     expect(page).to have_content('Sign In')
-    expect(page).to have_content('Sign Up')
+    expect(page).to have_content('SIGN UP')
   end
 end
