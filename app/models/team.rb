@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+  has_many :players
 
   validates :email, uniqueness: true, presence: true
   validates :team_name, uniqueness: true, presence: true
