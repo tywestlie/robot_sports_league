@@ -1,0 +1,22 @@
+<div class="team-login">
+  <main>
+    <section class="login-new">
+      <%= form_for :session, url: login_path do |f| %>
+      <div>
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+      </div>
+      <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+    </section>
+    <div class="login-btns">
+      <div class="login-create">
+        <%= f.submit 'Log In', class: "button btn indigo darken-4" %>
+        <% end %>
+        <%= link_to 'Create Team', new_team_path, class: "button btn indigo darken-4" %>
+      </div>
+    </div>
+  </main>
+</div>

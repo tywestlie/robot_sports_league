@@ -13,11 +13,13 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faker'
 gem 'active_model_serializers'
+gem 'materialize-sass'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'foundation-rails'
+  gem 'database_cleaner'
   gem 'pry'
   gem 'simplecov'
   gem 'factory_bot_rails'
@@ -25,6 +27,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'launchy'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 group :development do

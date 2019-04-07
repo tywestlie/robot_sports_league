@@ -1,0 +1,13 @@
+<div class="welcome-container">
+  <div class="welcome-title">
+    <h1> Welcome to the Robot Sports League</h1>
+  </div>
+  <% if current_team.nil?%>
+    <div class="welcome-title">
+    <h2> Sign in or register below! </h2>
+    </div>
+    <%= render 'partials/welcome_btns' %>
+    <% else %>
+    <h2 class="welcome-title"> See Dashboard For Roster Info </h2>
+  <%end%>
+</div>
