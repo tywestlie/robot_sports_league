@@ -30,4 +30,25 @@ a.welcome-btn{
   color: white;
 }
 
+.starters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+}
 
+.alternates {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.player-card {
+  margin-left: 45px;
+  margin-right: 45px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  width: 100px;
+  height: 200px;
+}
