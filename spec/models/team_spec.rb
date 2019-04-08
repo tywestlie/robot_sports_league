@@ -15,7 +15,7 @@ RSpec.describe Team, type: :model do
       expect(players.count).to eq(100)
 
       players.each do |player|
-        # expect(player.attribute_sum < 100)
+        expect(player.attribute_sum < 100)
         expect(player.unique_id.length).to eq(6)
       end
 
@@ -30,6 +30,12 @@ RSpec.describe Team, type: :model do
       end
       
       expect(player_names.uniq.count).to eq(100)
+    end
+
+    it 'auto_generates a roster' do
+      team = create(:team)
+
+      
     end
   end
 end

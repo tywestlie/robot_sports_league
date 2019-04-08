@@ -6,7 +6,7 @@ class CreatePlayers < ActiveRecord::Migration[5.2]
       t.integer :speed
       t.integer :agility
       t.string :unique_id, null: false
-      t.boolean :is_starter?, default: false
+      t.integer :role, default: 0
       t.references :team, foreign_key: true
 
 

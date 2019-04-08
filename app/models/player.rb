@@ -5,6 +5,7 @@ class Player < ApplicationRecord
 
   validates :name, uniqueness: true
   validates :unique_id, uniqueness: true
+  enum role: [:free_agent, :alternate, :starter]
 
   def attribute_sum
     self.strength + self.speed + self.agility
