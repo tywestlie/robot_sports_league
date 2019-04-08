@@ -1,14 +1,14 @@
 <main class="container">
-  <h1>Welcome <%=@presenter.team.team_name%>'s</h1>
-
-  <%= link_to 'Generate Roster', create_roster_teams_path, class: "button btn indigo darken-4" %>
+<div class="button-container">
+  <%= link_to 'Generate Roster', create_roster_teams_path, class: "roster-btn button btn blue darken-1" %>
+</div>
 
   <% if @presenter.team.roster != nil %>
   <h2><%=@presenter.team.team_name%>'s Robot Roster</h2>
   <div class="roster">
     <h3>Starters</h3>
     <hr>
-    
+
     <div class="roster-role starters">
       <% @presenter.team.starters.each do |starter| %>
       <div class="player-card card indigo darken-4">
@@ -47,8 +47,7 @@
     </div>
   </div>
   <% end %>
-
-  <%= link_to 'Clear Roster', clear_roster_teams_path, class: "button btn red darken-1" %>
-
-  <%= link_to 'Log Out', logout_path, method: 'delete', class: "button btn indigo darken-4" %>
+  <div class="button-container">
+    <%= link_to 'Clear Roster', clear_roster_teams_path, class: "roster-btn button btn red darken-1" %>
+  </div>
 </main>

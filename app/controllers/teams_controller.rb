@@ -14,7 +14,7 @@ class TeamsController < ApplicationController
       session[:team_id] = team.id
       redirect_to dashboard_path
     else
-      flash[:error] = 'team name already exists'
+      flash[:error] = 'team already exists'
       render :new
     end
   end
