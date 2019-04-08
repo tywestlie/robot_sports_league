@@ -9,7 +9,7 @@ RSpec.describe Team, type: :model do
   describe 'instance methods' do
     it 'creates a team of unique robot players' do
       team = create(:team)
-      
+
       players = team.players
 
       expect(players.count).to eq(100)
@@ -24,11 +24,11 @@ RSpec.describe Team, type: :model do
       end
 
       expect(player_ids.uniq.count).to eq(100)
-      
+
       player_names = players.map do |player|
         player.name
       end
-      
+
       expect(player_names.uniq.count).to eq(100)
     end
 
@@ -51,7 +51,7 @@ RSpec.describe Team, type: :model do
     end
 
     it 'clears a roster' do
-       team = create(:team)
+      team = create(:team)
 
       team.auto_generate_roster
 
@@ -73,6 +73,24 @@ RSpec.describe Team, type: :model do
       expect(starters.count).to eq(0)
       expect(alternates.count).to eq(0)
     end
+
+    it 'creates roster with unique attribute sums and names' do
+      team = create(:team)
+
+      team.auto_generate_roster
+
+      roster = team.roster
+
+      roster_sums = roster.map do |r|
+        r.attribute_sum
+      end
+
+      roster_names = roster.map do |r|
+        r.name
+      end
+
+      expect(roster_names.uniq.count).to eq(15)
+      expect(roster_sums.uniq.count).to eq(15)
+    end
   end
 end
-

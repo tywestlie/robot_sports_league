@@ -15,12 +15,12 @@ class Player < ApplicationRecord
     attributes = unique_attributes(team)
     team.players.create(unique_id: generate_unique_id,
                         name: generate_unique_name,
-                        strength: attributes[:strength], 
-                        speed: attributes[:speed], 
+                        strength: attributes[:strength],
+                        speed: attributes[:speed],
                         agility: attributes[:agility])
   end
 
- 
+
   private
 
     def self.generate_unique_id
@@ -28,7 +28,7 @@ class Player < ApplicationRecord
     end
 
     def self.generate_unique_name
-      Faker::FunnyName.unique.two_word_name
+      Faker::Name.unique.name
     end
 
     def self.unique_attributes(team)
@@ -41,10 +41,10 @@ class Player < ApplicationRecord
       attributes[:strength] = rand(1..50)
       attributes[:speed] = rand(1..50)
       attributes[:agility] = rand(1..50)
-      
+
       sum = attributes[:strength] + attributes[:speed] + attributes[:agility]
 
-      if sum > 100 && (!players_attribute_sums.include?(sum))
+      if sum > 100
         unique_attributes(team)
       else
         return attributes
