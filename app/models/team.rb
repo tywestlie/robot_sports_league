@@ -15,7 +15,7 @@ class Team < ApplicationRecord
 
   def auto_generate_roster
     clear_roster
-    
+
     players_sample = self.players.order('RANDOM()').limit(15).to_a
 
     starters = players_sample.pop(10)
@@ -30,12 +30,21 @@ class Team < ApplicationRecord
   end
 
   def clear_roster
-    roster = self.players.where(role: ['starter', 'alternate'])
-
     roster.each do |player|
       player.update(role: 'free_agent')
     end
   end
 
+  def roster
+    self.players.where(role: ['starter', 'alternate'])
+  end
+
+  def starters
+    self.players.where(role: 'starter')
+  end
+
+  def alternates
+    self.players.where(role: 'alternate')
+  end
   
 end

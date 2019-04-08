@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Team' do
+describe 'Team Features' do
   it 'team can sign in' do
     team = create(:team)
 
