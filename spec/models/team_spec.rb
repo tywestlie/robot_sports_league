@@ -6,7 +6,7 @@ RSpec.describe Team, type: :model do
     it {should validate_presence_of(:team_name)}
   end
 
-  describe 'class methods' do
+  describe 'instance methods' do
     it 'creates a team of unique robot players' do
       team = create(:team)
       
@@ -35,7 +35,19 @@ RSpec.describe Team, type: :model do
     it 'auto_generates a roster' do
       team = create(:team)
 
-      
+      team.auto_generate_roster
+
+      players = team.players
+
+      roster = players.where(role: ['starter', 'alternate'])
+      starters = players.where(role: 'starter')
+      alternates = players.where(role: 'alternate')
+
+
+
+      expect(roster.count).to eq(15)
+      expect(starters.count).to eq(10)
+      expect(alternates.count).to eq(5)
     end
   end
 end
