@@ -17,7 +17,7 @@ describe 'Team Features' do
     end
 
     click_on 'Clear Roster'
-    
+
     expect(team.roster.empty?).to eq(true)
   end
 
