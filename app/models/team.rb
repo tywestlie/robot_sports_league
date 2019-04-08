@@ -14,6 +14,8 @@ class Team < ApplicationRecord
   end
 
   def auto_generate_roster
+    clear_roster
+    
     players_sample = self.players.order('RANDOM()').limit(15).to_a
 
     starters = players_sample.pop(10)
