@@ -16,5 +16,9 @@ class TeamPresenter
   def alternates
     team.alternates
   end
-  
+
+  def unique_free_agents(player)
+    team.unique_free_agents(player)
+  end
+
 end

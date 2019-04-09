@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'teams#show'
 
-  resources :teams, only: [:new, :create] do
+  resources :teams, only: [:new, :create, :edit, :update] do
     resources :players, only: [:index, :edit, :update]
   end
 

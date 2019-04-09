@@ -23,7 +23,7 @@
           <h6> Total: <%= starter.attribute_sum %> </h6>
         </div>
           <%= form_for @presenter.team do |f| %>
-            <% options = options_from_collection_for_select(@presenter.team.free_agents, 'unique_id', 'name') %>
+            <% options = options_from_collection_for_select(@presenter.team.unique_free_agents(starter), 'unique_id', 'name') %>
             <%= f.label 'Select Free Agent' %>
             <%= f.select(:free_agents,  options)%>
           <%= f.submit 'Replace Player', class: "button btn blue darken-1" %>
@@ -46,7 +46,7 @@
         </div>
         <div class="card-action">
           <%= form_for @presenter.team do |f| %>
-            <% options = options_from_collection_for_select(@presenter.team.free_agents, 'unique_id', 'name') %>
+            <% options = options_from_collection_for_select(@presenter.team.unique_free_agents(alternate), 'unique_id', 'name') %>
             <%= f.label 'Select Free Agent' %>
             <%= f.select(:free_agents,  options)%>
           <%= f.submit 'Replace Player', class: "button btn blue darken-1" %>

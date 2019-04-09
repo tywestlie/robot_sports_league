@@ -14,7 +14,6 @@ class Team < ApplicationRecord
   end
 
   def auto_generate_roster
-
     clear_roster
 
     fetch_random_players
@@ -66,6 +65,12 @@ class Team < ApplicationRecord
 
   def free_agents
     self.players.where(role: 'free_agent')
+  end
+
+  def unique_free_agents(player)
+    self.players.where(role: 'free_agent').select do |free_player|
+      free_player.attribute_sum != player.attribute_sum
+    end
   end
 
 end
