@@ -16,4 +16,5 @@ class TeamPresenter
   def alternates
     team.alternates
   end
+  
 end

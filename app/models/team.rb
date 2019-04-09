@@ -14,18 +14,15 @@ class Team < ApplicationRecord
   end
 
   def auto_generate_roster
+
     clear_roster
 
-    roster_array = fetch_random_players
+    fetch_random_players
 
-    starters = roster_array.pop(10)
+    starters = roster.limit(10)
 
     starters.each do |starter|
       starter.update(role: "starter")
-    end
-
-    roster_array.each do |alternate|
-      alternate.update(role: "alternate")
     end
   end
 
@@ -36,17 +33,23 @@ class Team < ApplicationRecord
   end
 
   def fetch_random_players
-    players = self.players.order(Arel.sql('RANDOM()')).limit(15).to_a
+    player = self.free_agents.sample
 
-    sums = players.map do |player|
+    sums = roster.map do |player|
       player.attribute_sum
     end
 
-    if sums.uniq.count != 15
-      fetch_random_players
-    else
-      return players
+    if !sums.include?(player.attribute_sum)
+      sign_free_agent(player)
     end
+
+    if roster.count < 15
+      fetch_random_players
+    end
+  end
+
+  def sign_free_agent(player)
+    player.update(role: "alternate")
   end
 
   def roster
@@ -59,6 +62,10 @@ class Team < ApplicationRecord
 
   def alternates
     self.players.where(role: 'alternate')
+  end
+
+  def free_agents
+    self.players.where(role: 'free_agent')
   end
 
 end
