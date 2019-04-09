@@ -24,8 +24,12 @@ class TeamsController < ApplicationController
   end
 
   def update
-    team = current_team
-    if team.update(team_params)
+    @team = current_team
+    teams = Team.all
+    @team.attributes = team_params
+
+    if !teams.include?(team_params[:team_name])
+      @team.save(validate: false)
       redirect_to dashboard_path
     else
       flash[:error] = 'team name exists'

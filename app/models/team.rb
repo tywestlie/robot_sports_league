@@ -2,8 +2,8 @@ class Team < ApplicationRecord
   has_many :players
   after_create :get_free_agents
 
-  validates :email, uniqueness: true, presence: true
-  validates :team_name, uniqueness: true, presence: true
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, on: :create
+  validates :team_name, presence: true, uniqueness: { case_sensitive: false }, on: :create
   validates_presence_of :password
   has_secure_password
 
