@@ -10,7 +10,7 @@ describe 'Visitor' do
     visit '/'
 
     expect(current_path).to eq(root_path)
-    
+
     within('.welcome-btns') do
       click_on 'SIGN UP'
     end
@@ -28,6 +28,5 @@ describe 'Visitor' do
 
     expect(page).to have_content(team_name)
     expect(page).to_not have_content('Sign In')
-    expect(page).to_not have_content('Log Out')
   end
 end

@@ -5,19 +5,30 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = current_team
+    @presenter = TeamPresenter.new(current_team)
   end
 
-  def create  
+  def create
     team = Team.create(team_params)
     if team.save
       session[:team_id] = team.id
       redirect_to dashboard_path
     else
-      flash[:error] = 'team name already exists'
+      flash[:error] = 'team already exists'
       render :new
     end
   end
+
+  def create_roster
+    current_team.auto_generate_roster
+    redirect_back(fallback_location: root_path)
+  end
+
+  def clear_roster
+    current_team.clear_roster
+    redirect_back(fallback_location: root_path)
+  end
+
 
   private
 

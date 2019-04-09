@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_04_07_011627) do
     t.integer "speed"
     t.integer "agility"
     t.string "unique_id", null: false
-    t.boolean "is_starter?", default: false
+    t.integer "role", default: 0
     t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -30,4 +30,34 @@ a.welcome-btn{
   color: white;
 }
 
+ .roster-role {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+}
 
+.roster-btn {
+  display: block;
+  width: 25%;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+div.player-card {
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.team-form {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;;
+}
+
+div.button-container {
+  width: 100%;
+}

@@ -1,3 +1,53 @@
-<h1>Welcome <%=@team.team_name%>'s</h1>
+<main class="container">
+<div class="button-container">
+  <%= link_to 'Generate Roster', create_roster_teams_path, class: "roster-btn button btn blue darken-1" %>
+</div>
 
-<%= link_to 'Log Out', logout_path, method: 'delete', class: "button btn indigo darken-4" %>
+  <% if @presenter.team.roster != nil %>
+  <h2><%=@presenter.team.team_name%> Robot Roster</h2>
+  <div class="roster">
+    <h3>Starters</h3>
+    <hr>
+
+    <div class="roster-role starters">
+      <% @presenter.team.starters.each do |starter| %>
+      <div class="player-card card indigo darken-4">
+        <div class="card-content white-text">
+          <span class="card-title"> <%= starter.name %> </span>
+          <p> Strength: <%= starter.strength %> </p>
+          <p> Speed: <%= starter.speed %> </p>
+          <p> Agility: <%= starter.agility %> </p>
+          <h6> Total: <%= starter.attribute_sum %> </h6>
+        </div>
+        <div class="card-action">
+          <a href="#">Replace Player</a>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <h3>Alternates</h3>
+    <hr>
+    <div class="roster-role alternates">
+      <% @presenter.team.alternates.each do |alternate| %>
+      <div class="player-card card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title"> <%= alternate.name %> </span>
+          <p> Strength: <%= alternate.strength %> </p>
+          <p> Speed: <%= alternate.speed %> </p>
+          <p> Agility: <%= alternate.agility %> </p>
+          <h6> Total: <%= alternate.attribute_sum %> </h6>
+        </div>
+        <div class="card-action">
+          <a href="#">Replace Player</a>
+        </div>
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+  <div class="button-container">
+    <%= link_to 'Clear Roster', clear_roster_teams_path, class: "roster-btn button btn red darken-1" %>
+  </div>
+</main>
