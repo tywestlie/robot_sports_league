@@ -92,15 +92,5 @@ RSpec.describe Team, type: :model do
       expect(roster_names.uniq.count).to eq(15)
       expect(roster_sums.uniq.count).to eq(15)
     end
-
-    it 'can get unique free agents' do
-      team = create(:team)
-
-      team.auto_generate_roster
-
-      player = team.roster.first
-    
-      expect(team.unique_free_agents(player).length).to_not eq(team.free_agents.length)
-    end
   end
 end
