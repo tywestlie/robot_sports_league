@@ -19,6 +19,21 @@ class TeamsController < ApplicationController
     end
   end
 
+  def edit
+    @team = current_team
+  end
+
+  def update
+    @team = current_team
+    @team.attributes = team_params
+    if @team.save(validate: false)
+      redirect_to dashboard_path
+    else
+      flash[:error] = 'team name exists'
+    end
+  end
+
+
   def create_roster
     current_team.auto_generate_roster
     redirect_back(fallback_location: root_path)

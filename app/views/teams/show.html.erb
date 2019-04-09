@@ -1,7 +1,10 @@
 <main class="container">
+  <%= link_to 'Edit Team Name',edit_team_path(current_team), class: "roster-btn button btn blue darken-1"  %>
 <div class="button-container">
   <%= link_to 'Generate Roster', create_roster_teams_path, class: "roster-btn button btn blue darken-1" %>
 </div>
+
+
 
   <% if @presenter.team.roster != nil %>
   <h2><%=@presenter.team.team_name%> Robot Roster</h2>
@@ -19,9 +22,12 @@
           <p> Agility: <%= starter.agility %> </p>
           <h6> Total: <%= starter.attribute_sum %> </h6>
         </div>
-        <div class="card-action">
-          <a href="#">Replace Player</a>
-        </div>
+          <%= form_for @presenter.team do |f| %>
+            <% options = options_from_collection_for_select(@presenter.team.unique_free_agents(starter), 'unique_id', 'name') %>
+            <%= f.label 'Select Free Agent' %>
+            <%= f.select(:free_agents,  options)%>
+          <%= f.submit 'Replace Player', class: "button btn blue darken-1" %>
+          <% end %>
       </div>
       <% end %>
     </div>
@@ -39,7 +45,12 @@
           <h6> Total: <%= alternate.attribute_sum %> </h6>
         </div>
         <div class="card-action">
-          <a href="#">Replace Player</a>
+          <%= form_for @presenter.team do |f| %>
+            <% options = options_from_collection_for_select(@presenter.team.unique_free_agents(alternate), 'unique_id', 'name') %>
+            <%= f.label 'Select Free Agent' %>
+            <%= f.select(:free_agents,  options)%>
+          <%= f.submit 'Replace Player', class: "button btn blue darken-1" %>
+          <% end %>
         </div>
       </div>
 

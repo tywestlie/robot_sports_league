@@ -61,3 +61,7 @@ div.team-form {
 div.button-container {
   width: 100%;
 }
+
+input.select-dropdown {
+  color: white;
+}

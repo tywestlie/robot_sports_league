@@ -1,0 +1,12 @@
+<div class="team-form">
+  <section>
+    <%= form_for @team do |form| %>
+    <div >
+      <%= form.label :team_name %>
+      <%= form.text_field :team_name %>
+    </div>
+
+  </section>
+    <%= form.submit 'Change Name', class: "button btn indigo darken-4" %>
+  <% end %>
+</div>
